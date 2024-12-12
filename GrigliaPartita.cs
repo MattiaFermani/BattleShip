@@ -15,6 +15,7 @@ namespace BattleShip
         private List<Navi.Nave> flottaGiocatore = new List<Navi.Nave>();
         private List<Navi.Nave> flottaBot = new List<Navi.Nave>();
 
+
         private ComboBox ListaNavi;
         private ComboBox Orientamento;
         private Button btnConfermaPosizionamento;
