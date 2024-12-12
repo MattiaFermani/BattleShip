@@ -15,12 +15,11 @@ namespace BattleShip
         private List<Navi.Nave> flottaGiocatore = new List<Navi.Nave>();
         private List<Navi.Nave> flottaBot = new List<Navi.Nave>();
 
-
         private ComboBox ListaNavi;
         private ComboBox Orientamento;
-        private Button btnConfermaPosizionamento;
-        private Button btnAnnullaPosizionamento;
-        private Button btnIniziaPartita;
+        public Button btnConfermaPosizionamento;
+        public Button btnAnnullaPosizionamento;
+        public Button btnIniziaPartita;
 
         private bool posizionandoNave = false;
         private int lunghezzaNaveCorrente;
@@ -35,12 +34,9 @@ namespace BattleShip
             { "Nave-2", 2 }
         };
 
-
         public GrigliaPartita()
         {
             InitializeComponent();
-            this.Text = "Battaglia Navale - Posizionamento delle Navi";
-
             grigliaGiocatore = new Button[DimensioneGriglia, DimensioneGriglia];
             grigliaBot = new Button[DimensioneGriglia, DimensioneGriglia];
 
@@ -48,6 +44,7 @@ namespace BattleShip
             InizializzaGriglia(grigliaBot, 400, 20, "Bot", false);
 
             InizializzaMenu();
+            CambiaLingua(); // Aggiorna i testi al caricamento
         }
 
         private void InizializzaGriglia(Button[,] griglia, int offsetX, int offsetY, string titolo, bool attiva)
@@ -56,7 +53,8 @@ namespace BattleShip
             {
                 Text = titolo,
                 Location = new Point(offsetX, offsetY - 20),
-                Size = new Size(200, 20)
+                Size = new Size(200, 20),
+                Name = $"Label_{titolo}" // Assegniamo un nome per riferimento futuro
             };
             this.Controls.Add(label);
 
@@ -88,7 +86,8 @@ namespace BattleShip
             ListaNavi = new ComboBox
             {
                 Location = new Point(750, 50),
-                Size = new Size(150, 30)
+                Size = new Size(150, 30),
+                Name = "ListaNavi"
             };
             ListaNavi.Items.AddRange(new object[] { "Nave-4-1", "Nave-4-2", "Nave-3-1", "Nave-3-2", "Nave-2" });
             this.Controls.Add(ListaNavi);
@@ -97,7 +96,8 @@ namespace BattleShip
             {
                 Text = "Conferma Posizionamento",
                 Location = new Point(750, 100),
-                Size = new Size(150, 50)
+                Size = new Size(150, 50),
+                Name = "btnConfermaPosizionamento"
             };
             btnConfermaPosizionamento.Click += ConfermaPosizionamento;
             this.Controls.Add(btnConfermaPosizionamento);
@@ -106,7 +106,8 @@ namespace BattleShip
             {
                 Text = "Annulla Posizionamento",
                 Location = new Point(750, 150),
-                Size = new Size(150, 50)
+                Size = new Size(150, 50),
+                Name = "btnAnnullaPosizionamento"
             };
             btnAnnullaPosizionamento.Click += AnnullaPosizionamento;
             this.Controls.Add(btnAnnullaPosizionamento);
@@ -116,11 +117,54 @@ namespace BattleShip
                 Text = "Inizia Partita",
                 Location = new Point(750, 200),
                 Size = new Size(150, 50),
-                Enabled = false
+                Enabled = false,
+                Name = "btnIniziaPartita"
             };
             btnIniziaPartita.Click += IniziaPartita;
             this.Controls.Add(btnIniziaPartita);
+        }
 
+        private void CambiaLingua()
+        {
+            // Aggiorna i testi in base alla lingua corrente
+            if (MainMenu.LinguaCorrente == "it")
+            {
+                this.Text = "Battaglia Navale - Posizionamento Navi";
+
+                // Aggiorna i pulsanti
+                btnConfermaPosizionamento.Text = "Conferma Posizionamento";
+                btnAnnullaPosizionamento.Text = "Annulla Posizionamento";
+                btnIniziaPartita.Text = "Inizia Partita";
+
+                // Aggiorna le etichette
+                var labelGiocatore = Controls.Find("Label_Giocatore", true).FirstOrDefault() as Label;
+                if (labelGiocatore != null) labelGiocatore.Text = "Giocatore";
+
+                var labelBot = Controls.Find("Label_Bot", true).FirstOrDefault() as Label;
+                if (labelBot != null) labelBot.Text = "Bot";
+
+                // Aggiorna la ComboBox
+                if (ListaNavi != null) ListaNavi.Text = "Seleziona Nave";
+            }
+            else if (MainMenu.LinguaCorrente == "en")
+            {
+                this.Text = "Battleship - Ship Placement";
+
+                // Aggiorna i pulsanti
+                btnConfermaPosizionamento.Text = "Confirm Placement";
+                btnAnnullaPosizionamento.Text = "Cancel Placement";
+                btnIniziaPartita.Text = "Start Game";
+
+                // Aggiorna le etichette
+                var labelGiocatore = Controls.Find("Label_Giocatore", true).FirstOrDefault() as Label;
+                if (labelGiocatore != null) labelGiocatore.Text = "Player";
+
+                var labelBot = Controls.Find("Label_Bot", true).FirstOrDefault() as Label;
+                if (labelBot != null) labelBot.Text = "Bot";
+
+                // Aggiorna la ComboBox
+                if (ListaNavi != null) ListaNavi.Text = "Select Ship";
+            }
         }
 
         private void PosizionamentoNave(object sender, EventArgs e)
