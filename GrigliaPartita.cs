@@ -127,7 +127,7 @@ namespace BattleShip
         private void CambiaLingua()
         {
             // Aggiorna i testi in base alla lingua corrente
-            if (MainMenu.LinguaCorrente == "it")
+            if (Impostazioni.LinguaCorrente == "it")
             {
                 this.Text = "Battaglia Navale - Posizionamento Navi";
 
@@ -146,7 +146,7 @@ namespace BattleShip
                 // Aggiorna la ComboBox
                 if (ListaNavi != null) ListaNavi.Text = "Seleziona Nave";
             }
-            else if (MainMenu.LinguaCorrente == "en")
+            else if (Impostazioni.LinguaCorrente == "en")
             {
                 this.Text = "Battleship - Ship Placement";
 

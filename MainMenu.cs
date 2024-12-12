@@ -15,11 +15,9 @@ namespace BattleShip
     {
         // Dichiarazione dei pulsanti come campi della classe
         private Button btnIniziaPartita;
+        private Button btnOpzioni;
         private Button btnEsci;
-        Form partita = new GrigliaPartita();
 
-        // Variabile globale per memorizzare la lingua
-        public static string LinguaCorrente { get; private set; } = "it"; // Default: Italiano
 
         public MainMenu()
         {
@@ -28,44 +26,29 @@ namespace BattleShip
 
             // Associa i pulsanti definiti nel TableLayoutPanel
             btnIniziaPartita = (Button)tableLayoutPanel1.Controls.Find("BtnIniziaPartita", true).FirstOrDefault();
-            btnEsci = (Button)tableLayoutPanel1.Controls.Find("BtnEsci", true).FirstOrDefault();
+            btnOpzioni = (Button)tableLayoutPanel1.Controls.Find("BtnOpzioni", true).FirstOrDefault();
 
             // Controlla che i pulsanti esistano e associa gli eventi
             if (btnIniziaPartita != null)
-                btnIniziaPartita.Click += BtnIniziaPartita_Click;
+                btnIniziaPartita.Click += BtnNuovaPartita_Click;
 
-            if (btnEsci != null)
-                btnEsci.Click += BtnEsci_Click;
-        }
-
-        private void BtnIniziaPartita_Click(object sender, EventArgs e)
-        {
-            // Passa la lingua al form della partita
-            partita.Show();
-        }
-
-        private void BtnEsci_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+            if (btnOpzioni != null)
+                btnOpzioni.Click += BtnOpzioni_Click;
         }
 
         private void CambiaLingua()
         {
-            if (LinguaCorrente == "it")
+            if (Impostazioni.LinguaCorrente == "it")
             {
                 this.Text = "Battaglia Navale - Menu Principale";
                 MainMenuTitle.Text = "Battaglia Navale";
-                linguaToolStripMenuItem.Text = "Lingua";
                 if (btnIniziaPartita != null) btnIniziaPartita.Text = "Inizia Partita";
-                if (btnEsci != null) btnEsci.Text = "Esci";
             }
-            else if (LinguaCorrente == "en")
+            else if (Impostazioni.LinguaCorrente == "en")
             {
                 this.Text = "Battleship - Main Menu";
                 MainMenuTitle.Text = "Battle Ship";
-                linguaToolStripMenuItem.Text = "Language";
                 if (btnIniziaPartita != null) btnIniziaPartita.Text = "Start Game";
-                if (btnEsci != null) btnEsci.Text = "Exit";
             }
         }
 
@@ -79,33 +62,19 @@ namespace BattleShip
 
         }
 
-        private void italianoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BtnNuovaPartita_Click(object sender, EventArgs e)
         {
-            // Cambia la lingua in italiano
-            englishToolStripMenuItem.Checked = false;
-            italianoToolStripMenuItem.Checked = true;
-            LinguaCorrente = "it"; // Memorizza la lingua selezionata
-            CambiaLingua();
-        }
-
-        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            // Cambia la lingua in inglese
-            englishToolStripMenuItem.Checked = true;
-            italianoToolStripMenuItem.Checked = false;
-            LinguaCorrente = "en"; // Memorizza la lingua selezionata
-            CambiaLingua();
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
+            Form partita = new GrigliaPartita();
+            partita.Show();
         }
 
         private void BtnOpzioni_Click(object sender, EventArgs e)
         {
-
+            Form opzioni = new Impostazioni();
+            opzioni.ShowDialog();
+            CambiaLingua();
+            Refresh();
+            
         }
     }
 }

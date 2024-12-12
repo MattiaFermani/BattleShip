@@ -30,3 +30,4 @@ C:\Users\Utente\source\repos\BattleShip\obj\Debug\BattleShip.csproj.GenerateReso
 C:\Users\Utente\source\repos\BattleShip\obj\Debug\BattleShip.csproj.CoreCompileInputs.cache
 C:\Users\Utente\source\repos\BattleShip\obj\Debug\BattleShip.exe
 C:\Users\Utente\source\repos\BattleShip\obj\Debug\BattleShip.pdb
+C:\Users\Utente\source\repos\BattleShip\obj\Debug\BattleShip.Impostazioni.resources
