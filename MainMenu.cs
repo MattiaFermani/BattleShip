@@ -97,5 +97,15 @@ namespace BattleShip
             LinguaCorrente = "en"; // Memorizza la lingua selezionata
             CambiaLingua();
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void BtnOpzioni_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
