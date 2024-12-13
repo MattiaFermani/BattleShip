@@ -8,7 +8,7 @@ namespace BattleShip
 {
     public partial class GrigliaPartita : Form
     {
-        private const int DimensioneGriglia = 10; // Dimensione 10x10
+        private const int DimensioneGriglia = 10;
         private Button[,] grigliaGiocatore;
         private Button[,] grigliaBot;
 
@@ -25,13 +25,16 @@ namespace BattleShip
         private int lunghezzaNaveCorrente;
         private List<(int, int)> posizioneCorrente = new List<(int, int)>();
 
+        private bool turnoGiocatore = true;
+
         private Dictionary<string, int> naviDisponibili = new Dictionary<string, int>
         {
+            { "Nave-5",   5 }, 
             { "Nave-4-1", 4 },
             { "Nave-4-2", 4 },
             { "Nave-3-1", 3 },
             { "Nave-3-2", 3 },
-            { "Nave-2", 2 }
+            { "Nave-2",   2 }
         };
 
         public GrigliaPartita()
@@ -44,7 +47,7 @@ namespace BattleShip
             InizializzaGriglia(grigliaBot, 400, 20, "Bot", false);
 
             InizializzaMenu();
-            CambiaLingua(); // Aggiorna i testi al caricamento
+            CambiaLingua();
         }
 
         private void InizializzaGriglia(Button[,] griglia, int offsetX, int offsetY, string titolo, bool attiva)
@@ -54,7 +57,7 @@ namespace BattleShip
                 Text = titolo,
                 Location = new Point(offsetX, offsetY - 20),
                 Size = new Size(200, 20),
-                Name = $"Label_{titolo}" // Assegniamo un nome per riferimento futuro
+                Name = $"Label_{titolo}"
             };
             this.Controls.Add(label);
 
@@ -89,7 +92,7 @@ namespace BattleShip
                 Size = new Size(150, 30),
                 Name = "ListaNavi"
             };
-            ListaNavi.Items.AddRange(new object[] { "Nave-4-1", "Nave-4-2", "Nave-3-1", "Nave-3-2", "Nave-2" });
+            ListaNavi.Items.AddRange(new object[] { "Nave-5", "Nave-4-1", "Nave-4-2", "Nave-3-1", "Nave-3-2", "Nave-2" });
             this.Controls.Add(ListaNavi);
 
             btnConfermaPosizionamento = new Button
@@ -126,43 +129,36 @@ namespace BattleShip
 
         private void CambiaLingua()
         {
-            // Aggiorna i testi in base alla lingua corrente
             if (Impostazioni.LinguaCorrente == "it")
             {
                 this.Text = "Battaglia Navale - Posizionamento Navi";
 
-                // Aggiorna i pulsanti
                 btnConfermaPosizionamento.Text = "Conferma Posizionamento";
                 btnAnnullaPosizionamento.Text = "Annulla Posizionamento";
                 btnIniziaPartita.Text = "Inizia Partita";
 
-                // Aggiorna le etichette
                 var labelGiocatore = Controls.Find("Label_Giocatore", true).FirstOrDefault() as Label;
                 if (labelGiocatore != null) labelGiocatore.Text = "Giocatore";
 
                 var labelBot = Controls.Find("Label_Bot", true).FirstOrDefault() as Label;
                 if (labelBot != null) labelBot.Text = "Bot";
 
-                // Aggiorna la ComboBox
                 if (ListaNavi != null) ListaNavi.Text = "Seleziona Nave";
             }
             else if (Impostazioni.LinguaCorrente == "en")
             {
                 this.Text = "Battleship - Ship Placement";
 
-                // Aggiorna i pulsanti
                 btnConfermaPosizionamento.Text = "Confirm Placement";
                 btnAnnullaPosizionamento.Text = "Cancel Placement";
                 btnIniziaPartita.Text = "Start Game";
 
-                // Aggiorna le etichette
                 var labelGiocatore = Controls.Find("Label_Giocatore", true).FirstOrDefault() as Label;
                 if (labelGiocatore != null) labelGiocatore.Text = "Player";
 
                 var labelBot = Controls.Find("Label_Bot", true).FirstOrDefault() as Label;
                 if (labelBot != null) labelBot.Text = "Bot";
 
-                // Aggiorna la ComboBox
                 if (ListaNavi != null) ListaNavi.Text = "Select Ship";
             }
         }
@@ -182,7 +178,6 @@ namespace BattleShip
                 Button bottone = (Button)sender;
                 var posizione = ((int, int))bottone.Tag;
 
-                // Aggiungi la posizione solo se è valida
                 if (bottone.BackColor == Color.LightBlue && posizioneCorrente.Count < lunghezzaNaveCorrente)
                 {
                     posizioneCorrente.Add(posizione);
@@ -198,10 +193,63 @@ namespace BattleShip
                 }
                 else if (posizioneCorrente.Contains(posizione))
                 {
-                    // Permetti di deselezionare una posizione
                     bottone.BackColor = Color.LightBlue;
                     posizioneCorrente.Remove(posizione);
                 }
+            }
+        }
+
+
+        private void AbilitaAttaccoGiocatore()
+        {
+            foreach (var bottone in grigliaBot)
+            {
+                bottone.Enabled = true;
+                bottone.Click += AttaccoGiocatore;
+            }
+        }
+
+        private void AttaccoGiocatore(object sender, EventArgs e)
+        {
+            if (!turnoGiocatore)
+            {
+                MessageBox.Show("Non è il tuo turno!");
+                return;
+            }
+
+            Button bottone = sender as Button;
+            if (bottone == null)
+                return;
+
+            var posizione = ((int, int))bottone.Tag;
+
+            string risultato = Attacco.GiocatoreAttacca(posizione, bottone, flottaBot, ref turnoGiocatore);
+            MessageBox.Show(risultato);
+
+            string esito = Attacco.ControllaVittoria(flottaGiocatore, flottaBot);
+            if (esito != null)
+            {
+                MessageBox.Show(esito);
+                this.Close();
+                return;
+            }
+
+            if (!turnoGiocatore)
+            {
+                AttaccoBot();
+            }
+        }
+
+        private void AttaccoBot()
+        {
+            string risultato = Attacco.BotAttacca(grigliaGiocatore, flottaGiocatore, ref turnoGiocatore);
+            MessageBox.Show(risultato);
+
+            string esito = Attacco.ControllaVittoria(flottaGiocatore, flottaBot);
+            if (esito != null)
+            {
+                MessageBox.Show(esito);
+                this.Close();
             }
         }
 
@@ -215,28 +263,23 @@ namespace BattleShip
 
         private void ConfermaPosizionamento(object sender, EventArgs e)
         {
-            // Controlla se la nave è valida e completata
             if (posizioneCorrente.Count != lunghezzaNaveCorrente || !Valido(posizioneCorrente, lunghezzaNaveCorrente, flottaGiocatore))
             {
                 ResettaPosizioniCorrenti();
                 return;
             }
 
-            // Aggiungi la nave alla flotta e aggiorna la griglia
             flottaGiocatore.Add(new Navi.Nave(lunghezzaNaveCorrente, new List<(int, int)>(posizioneCorrente)));
             posizioneCorrente.ForEach(pos =>
             {
                 grigliaGiocatore[pos.Item1, pos.Item2].BackColor = Color.Green;
             });
 
-            // Rimuovi la nave dalla lista
             ListaNavi.Items.Remove(ListaNavi.SelectedItem);
 
-            // Ripristina lo stato per la prossima nave
             posizioneCorrente.Clear();
             posizionandoNave = false;
 
-            // Abilita il pulsante "Inizia Partita" quando tutte le navi sono posizionate
             if (ListaNavi.Items.Count == 0)
             {
                 btnIniziaPartita.Enabled = true;
@@ -263,6 +306,7 @@ namespace BattleShip
 
         private void IniziaPartita(object sender, EventArgs e)
         {
+            AbilitaAttaccoGiocatore();
             this.Controls.Remove(ListaNavi);
             this.Controls.Remove(btnConfermaPosizionamento);
             this.Controls.Remove(btnAnnullaPosizionamento);
@@ -277,11 +321,35 @@ namespace BattleShip
 
             foreach (Button bottone in grigliaBot) bottone.Enabled = true;
             this.Text = "Battaglia Navale - Partita Iniziata!";
+
+            Button btnDebug = new Button
+            {
+                Text = "DEBUG",
+                Location = new Point(300, 360),
+                Size = new Size(150, 50),
+                Name = "btnDebug"
+            };
+            btnDebug.Click += BtnDebug_Click;
+            this.Controls.Add(btnDebug);
+        }
+
+        // Metodo per il pulsante DEBUG
+        private void BtnDebug_Click(object sender, EventArgs e)
+        {
+            foreach (var nave in flottaBot)
+            {
+                foreach (var posizione in nave.Posizioni)
+                {
+                    int riga = posizione.Item1;
+                    int colonna = posizione.Item2;
+                    Button bottone = grigliaBot[riga, colonna];
+                    bottone.BackColor = Color.Gold;
+                }
+            }
         }
 
         private bool Valido(List<(int, int)> posizioni, int lunghezza, List<Navi.Nave> flotta)
         {
-            // Controllo 1: Non sovrapporre ad altre navi
             foreach (var nave in flotta)
             {
                 foreach (var pos in nave.Posizioni)
@@ -293,11 +361,8 @@ namespace BattleShip
                     }
                 }
             }
-
-            // Controllo 2:verifica l'allineamento
             if (posizioni.Count > 1)
             {
-                // Controlla che tutte le posizioni siano allineate (stessa riga o colonna)
                 bool stessaRiga = posizioni.All(pos => pos.Item1 == posizioni[0].Item1);
                 bool stessaColonna = posizioni.All(pos => pos.Item2 == posizioni[0].Item2);
 
@@ -307,7 +372,6 @@ namespace BattleShip
                     return false;
                 }
 
-                // Controlla che le posizioni siano consecutive
                 if (stessaRiga)
                 {
                     var colonne = posizioni.Select(pos => pos.Item2).OrderBy(c => c).ToList();
@@ -334,13 +398,12 @@ namespace BattleShip
                 }
             }
 
-            // Controllo 3: Validazione completa (solo alla conferma)
             if (posizioni.Count == lunghezza)
             {
-                return true; // Lunghezza corretta, validazione completa superata
+                return true;
             }
 
-            return true; // Posizionamento progressivo valido
+            return true;
         }
 
 

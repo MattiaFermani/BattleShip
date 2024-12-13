@@ -71,6 +71,9 @@
     <EmbeddedResource Include="GrigliaPartita.resx">
       <DependentUpon>GrigliaPartita.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Impostazioni.aa.resx">
+      <DependentUpon>Impostazioni.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Impostazioni.resx">
       <DependentUpon>Impostazioni.cs</DependentUpon>
     </EmbeddedResource>

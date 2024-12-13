@@ -48,3 +48,6 @@ C:\Users\matti\source\repos\MattiaFermani\BattleShip\obj\Debug\BattleShip.csproj
 C:\Users\matti\source\repos\MattiaFermani\BattleShip\obj\Debug\BattleShip.csproj.CoreCompileInputs.cache
 C:\Users\matti\source\repos\MattiaFermani\BattleShip\obj\Debug\BattleShip.exe
 C:\Users\matti\source\repos\MattiaFermani\BattleShip\obj\Debug\BattleShip.pdb
+C:\Users\matti\source\repos\MattiaFermani\BattleShip\bin\Debug\aa\BattleShip.resources.dll
+C:\Users\matti\source\repos\MattiaFermani\BattleShip\obj\Debug\BattleShip.Impostazioni.aa.resources
+C:\Users\matti\source\repos\MattiaFermani\BattleShip\obj\Debug\aa\BattleShip.resources.dll

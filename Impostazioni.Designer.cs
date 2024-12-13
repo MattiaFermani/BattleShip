@@ -28,45 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Impostazioni));
             this.LblLingua = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.LblDifficolta = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // LblLingua
             // 
-            this.LblLingua.AutoSize = true;
-            this.LblLingua.Font = new System.Drawing.Font("Ink Free", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblLingua.Location = new System.Drawing.Point(12, 9);
+            resources.ApplyResources(this.LblLingua, "LblLingua");
             this.LblLingua.Name = "LblLingua";
-            this.LblLingua.Size = new System.Drawing.Size(75, 25);
-            this.LblLingua.TabIndex = 0;
-            this.LblLingua.Text = "Lingua";
             // 
             // comboBox1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(131, 9);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(104, 24);
-            this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // LblDifficolta
+            // 
+            resources.ApplyResources(this.LblDifficolta, "LblDifficolta");
+            this.LblDifficolta.Name = "LblDifficolta";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox2, "comboBox2");
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // Impostazioni
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(247, 46);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.LblDifficolta);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.LblLingua);
-            this.Font = new System.Drawing.Font("Ink Free", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(263, 85);
             this.MinimizeBox = false;
             this.Name = "Impostazioni";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Opzioni";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -76,5 +84,7 @@
 
         private System.Windows.Forms.Label LblLingua;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label LblDifficolta;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

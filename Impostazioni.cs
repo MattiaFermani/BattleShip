@@ -6,56 +6,62 @@ namespace BattleShip
 {
     public partial class Impostazioni : Form
     {
-        // Variabile globale per memorizzare la lingua
-        public static string LinguaCorrente { get; private set; } = "it"; // Default: Italiano
-        private static string LinguaSelezionata = LinguaCorrente; // Lingua temporanea durante le modifiche
-        private static int IndexCorrente = 0; // Indice del ComboBox corrente
+        public static string LinguaCorrente { get; private set; } = "it";
+        private static string LinguaSelezionata = LinguaCorrente;
+        private static int IndexLingua = 0;
+        private static int IndexMode = 0;
         private static List<string> Lingue = new List<string> { "it", "en" };
 
         public Impostazioni()
         {
             InitializeComponent();
 
-            // Inizializza il ComboBox con le lingue disponibili
             comboBox1.Items.AddRange(new object[] { "Italiano", "English" });
-            comboBox1.SelectedIndex = IndexCorrente;
+            comboBox2.Items.AddRange(new object[] { "Facile", "Difficile" });
+            comboBox1.SelectedIndex = IndexLingua;
+            comboBox2.SelectedIndex = IndexMode;
 
-            // Aggiorna la lingua al caricamento
             CambiaLingua();
 
-            // Associa gli eventi
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             this.FormClosing += Impostazioni_FormClosing;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Aggiorna l'indice selezionato e la lingua temporanea
-            IndexCorrente = comboBox1.SelectedIndex;
-            LinguaSelezionata = Lingue[IndexCorrente];
+            IndexLingua = comboBox1.SelectedIndex;
+            LinguaSelezionata = Lingue[IndexLingua];
 
-            // Aggiorna i testi dinamicamente
             CambiaLingua();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IndexMode = comboBox2.SelectedIndex;
         }
 
         private void CambiaLingua()
         {
-            // Aggiorna i testi del form e dei controlli in base alla lingua selezionata
             if (LinguaSelezionata == "it")
             {
                 LblLingua.Text = "Lingua";
+                LblDifficolta.Text = "Difficoltà";
+                comboBox2.Items[0] = "Facile";
+                comboBox2.Items[1] = "Difficile";
                 this.Text = "Opzioni";
             }
             else if (LinguaSelezionata == "en")
             {
                 LblLingua.Text = "Language";
+                LblDifficolta.Text = "Mode";
+                comboBox2.Items[0] = "Easy";
+                comboBox2.Items[1] = "Hard";
                 this.Text = "Options";
             }
         }
 
         private void Impostazioni_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Controlla se la lingua è stata modificata rispetto alla lingua corrente
             if (LinguaSelezionata != LinguaCorrente)
             {
                 DialogResult result = DialogResult.No;
@@ -80,16 +86,15 @@ namespace BattleShip
 
                 if (result == DialogResult.Yes)
                 {
-                    // Salva la nuova lingua
                     LinguaCorrente = LinguaSelezionata;
                 }
                 else if (result == DialogResult.No)
                 {
-                    // Ripristina la lingua precedente
                     LinguaSelezionata = LinguaCorrente;
-                    IndexCorrente = Lingue.IndexOf(LinguaCorrente);
+                    IndexLingua = Lingue.IndexOf(LinguaCorrente);
                 }
             }
         }
+
     }
 }
