@@ -46,10 +46,7 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Italiano",
-            "English"});
-            this.comboBox1.Location = new System.Drawing.Point(93, 9);
+            this.comboBox1.Location = new System.Drawing.Point(131, 9);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(104, 24);
             this.comboBox1.TabIndex = 1;
@@ -59,14 +56,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(201, 377);
+            this.ClientSize = new System.Drawing.Size(247, 46);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.LblLingua);
             this.Font = new System.Drawing.Font("Ink Free", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(263, 85);
+            this.MinimizeBox = false;
             this.Name = "Impostazioni";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Opzioni";
-            this.Load += new System.EventHandler(this.Impostazioni_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -14,9 +14,10 @@ namespace BattleShip
     public partial class MainMenu : Form
     {
         // Dichiarazione dei pulsanti come campi della classe
-        private Button btnIniziaPartita;
+        private Button btnNuovaPartita;
         private Button btnOpzioni;
         private Button btnEsci;
+        Form partita;
 
 
         public MainMenu()
@@ -25,15 +26,16 @@ namespace BattleShip
             this.Text = "Battaglia Navale - Menu Principale";
 
             // Associa i pulsanti definiti nel TableLayoutPanel
-            btnIniziaPartita = (Button)tableLayoutPanel1.Controls.Find("BtnIniziaPartita", true).FirstOrDefault();
+            btnNuovaPartita = (Button)tableLayoutPanel1.Controls.Find("BtnNuovaPartita", true).FirstOrDefault();
             btnOpzioni = (Button)tableLayoutPanel1.Controls.Find("BtnOpzioni", true).FirstOrDefault();
 
             // Controlla che i pulsanti esistano e associa gli eventi
-            if (btnIniziaPartita != null)
-                btnIniziaPartita.Click += BtnNuovaPartita_Click;
+            if (btnNuovaPartita != null)
+                btnNuovaPartita.Click += BtnNuovaPartita_Click;
 
             if (btnOpzioni != null)
                 btnOpzioni.Click += BtnOpzioni_Click;
+            CambiaLingua();
         }
 
         private void CambiaLingua()
@@ -42,39 +44,38 @@ namespace BattleShip
             {
                 this.Text = "Battaglia Navale - Menu Principale";
                 MainMenuTitle.Text = "Battaglia Navale";
-                if (btnIniziaPartita != null) btnIniziaPartita.Text = "Inizia Partita";
+                if (btnNuovaPartita != null) btnNuovaPartita.Text = "Inizia Partita";
+                if (btnOpzioni != null) btnOpzioni.Text = "Opzioni";
             }
             else if (Impostazioni.LinguaCorrente == "en")
             {
                 this.Text = "Battleship - Main Menu";
                 MainMenuTitle.Text = "Battle Ship";
-                if (btnIniziaPartita != null) btnIniziaPartita.Text = "Start Game";
+                if (btnNuovaPartita != null) btnNuovaPartita.Text = "Start Game";
+                if (btnOpzioni != null) btnOpzioni.Text = "Options";
             }
         }
 
-        private void MainMenu_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void BtnNuovaPartita_Click(object sender, EventArgs e)
         {
-            Form partita = new GrigliaPartita();
+            partita = new GrigliaPartita();
             partita.Show();
         }
 
         private void BtnOpzioni_Click(object sender, EventArgs e)
         {
-            Form opzioni = new Impostazioni();
-            opzioni.ShowDialog();
+            using (Form opzioni = new Impostazioni())
+            {
+                opzioni.ShowDialog();
+            }
+
             CambiaLingua();
-            Refresh();
-            
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

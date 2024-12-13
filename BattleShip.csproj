@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attacco.cs" />
     <Compile Include="GrigliaPartita.cs">
       <SubType>Form</SubType>
     </Compile>

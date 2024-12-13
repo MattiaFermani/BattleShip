@@ -1,25 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Utente\\source\\repos\\BattleShip\\",
+  "WorkspaceRootPath": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|C:\\Users\\Utente\\source\\repos\\BattleShip\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|solutionrelative:mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|c:\\users\\utente\\source\\repos\\battleship\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|solutionrelative:mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|C:\\Users\\Utente\\source\\repos\\BattleShip\\grigliapartita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|c:\\users\\matti\\source\\repos\\mattiafermani\\battleship\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|solutionrelative:mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\grigliapartita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|solutionrelative:grigliapartita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|C:\\Users\\Utente\\source\\repos\\BattleShip\\mainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\mainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|solutionrelative:mainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|C:\\Users\\Utente\\source\\repos\\BattleShip\\navi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\navi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4148B40D-8618-4971-83ED-498F57FEF9DB}|BattleShip.csproj|solutionrelative:navi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -30,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainMenu.cs",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\BattleShip\\MainMenu.cs",
+              "DocumentMoniker": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\MainMenu.cs",
               "RelativeDocumentMoniker": "MainMenu.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\BattleShip\\MainMenu.cs*",
+              "ToolTip": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\MainMenu.cs*",
               "RelativeToolTip": "MainMenu.cs*",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAIwGIAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAuwE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-09T22:05:58.768Z",
               "IsPinned": true,
@@ -50,23 +50,22 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "GrigliaPartita.cs",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\BattleShip\\GrigliaPartita.cs",
+              "DocumentMoniker": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\GrigliaPartita.cs",
               "RelativeDocumentMoniker": "GrigliaPartita.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\BattleShip\\GrigliaPartita.cs",
+              "ToolTip": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\GrigliaPartita.cs",
               "RelativeToolTip": "GrigliaPartita.cs",
               "ViewState": "AgIAAIQAAAAAAAAAAAAUwKcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-09T21:55:02.244Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Navi.cs",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\BattleShip\\Navi.cs",
+              "DocumentMoniker": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\Navi.cs",
               "RelativeDocumentMoniker": "Navi.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\BattleShip\\Navi.cs",
+              "ToolTip": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\Navi.cs",
               "RelativeToolTip": "Navi.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -85,9 +84,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "MainMenu.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\BattleShip\\MainMenu.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\MainMenu.Designer.cs",
               "RelativeDocumentMoniker": "MainMenu.Designer.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\BattleShip\\MainMenu.Designer.cs*",
+              "ToolTip": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\MainMenu.Designer.cs*",
               "RelativeToolTip": "MainMenu.Designer.cs*",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -96,11 +95,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainMenu.cs [Progettazione]",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\BattleShip\\MainMenu.cs",
+              "DocumentMoniker": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\MainMenu.cs",
               "RelativeDocumentMoniker": "MainMenu.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\BattleShip\\MainMenu.cs [Progettazione]*",
+              "ToolTip": "C:\\Users\\matti\\source\\repos\\MattiaFermani\\BattleShip\\MainMenu.cs [Progettazione]*",
               "RelativeToolTip": "MainMenu.cs [Progettazione]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-10T10:24:55.105Z",
